@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,6 +13,13 @@
 
 <body>
 
+    <!-- CURSEUR -->
+    <div class="cursor"></div>
+    <div class="cursor-label">VIEW</div>
+
+
+    <!-- NAVBAR -->
+
     <header class="navbar">
 
         <a href="#" class="logo">
@@ -22,6 +30,7 @@
             <a href="#services">Services</a>
             <a href="#projects">Projets</a>
             <a href="#prices">Tarifs</a>
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </nav>
 
@@ -35,80 +44,170 @@
 
     <main>
 
-        <section class="hero">
 
-            <p class="eyebrow">SOSO.DEV — CREATIVE WORK</p>
+        <!-- HERO -->
 
-            <h1>
-                JE<br>
-                <span>FAIS</span><br>
-                <strong>MIEUX.</strong>
-            </h1>
+        <section class="hero reveal">
 
-            <div class="hero-bottom">
+            <div class="hero-index">
+                001 / 026
+            </div>
 
-                <p>
-                    Je crée des <b>systèmes Roblox</b> et des
-                    <b>interfaces UI</b> personnalisées,
-                    pensées pour donner une vraie identité
-                    à ton jeu.
+            <div class="hero-side">
+                ROBLOX<br>
+                SCRIPTING<br>
+                UI DESIGN
+            </div>
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    SOSO.DEV — CREATIVE WORK
                 </p>
 
-                <a href="#projects" class="button">
-                    VOIR MES PROJETS →
-                </a>
+                <h1>
+                    JE<br>
+                    <span>FAIS</span><br>
+                    <strong>MIEUX.</strong>
+                </h1>
+
+                <div class="hero-bottom">
+
+                    <p>
+                        Je crée des <b>systèmes Roblox</b> et des
+                        <b>interfaces UI</b> personnalisées,
+                        pensées pour donner une vraie identité
+                        à ton jeu.
+                    </p>
+
+                    <a href="#projects" class="button">
+                        VOIR MES PROJETS →
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-art">
+
+                <div class="art-card">
+
+                    <small>SOSO / 026</small>
+
+                    <div>
+                        S<br>
+                        O<br>
+                        S<br>
+                        O
+                    </div>
+
+                </div>
+
+                <div class="art-sticker">
+                    ROBLOX<br>
+                    SCRIPT<br>
+                    + UI
+                </div>
 
             </div>
 
         </section>
 
 
+        <!-- MARQUEE -->
+
         <div class="marquee">
-            ROBLOX SCRIPTING　✦　UI DESIGN　✦　SYSTEMS　✦　CREATIVE DEVELOPMENT　✦
+
+            <div class="marquee-track">
+
+                <span>ROBLOX SCRIPTING</span>
+                <b>✦</b>
+
+                <span>UI DESIGN</span>
+                <b>✦</b>
+
+                <span>SYSTEMS</span>
+                <b>✦</b>
+
+                <span>CREATIVE DEVELOPMENT</span>
+                <b>✦</b>
+
+                <span>ROBLOX SCRIPTING</span>
+                <b>✦</b>
+
+                <span>UI DESIGN</span>
+                <b>✦</b>
+
+            </div>
+
         </div>
 
 
-        <section class="section" id="services">
+        <!-- SERVICES -->
+
+        <section class="section reveal" id="services">
 
             <div class="heading">
+
                 <span>02 — SERVICES</span>
 
                 <h2>
                     PAS JUSTE<br>
                     DU CODE.
                 </h2>
+
             </div>
+
 
             <div class="services">
 
-                <article>
+                <article class="service">
+
                     <small>01 / SCRIPTING</small>
+
                     <h3>Scripting</h3>
 
                     <p>
                         Des systèmes Roblox personnalisés,
-                        propres et adaptés à ton expérience.
+                        propres et adaptés aux besoins
+                        de ton expérience.
                     </p>
+
+                    <i>↗</i>
+
                 </article>
 
-                <article>
+
+                <article class="service">
+
                     <small>02 / INTERFACE</small>
+
                     <h3>UI Design</h3>
 
                     <p>
                         Des interfaces originales qui
-                        correspondent à l'identité de ton jeu.
+                        correspondent à l'identité visuelle
+                        de ton jeu.
                     </p>
+
+                    <i>↗</i>
+
                 </article>
 
-                <article>
+
+                <article class="service">
+
                     <small>03 / FULL SYSTEM</small>
+
                     <h3>Systèmes</h3>
 
                     <p>
                         UI et scripting réunis pour créer
                         un système complet et cohérent.
                     </p>
+
+                    <i>↗</i>
+
                 </article>
 
             </div>
@@ -116,32 +215,49 @@
         </section>
 
 
-        <section class="section" id="projects">
+        <!-- PROJECTS -->
+
+        <section class="section reveal" id="projects">
 
             <div class="heading">
+
                 <span>03 — SELECTED WORK</span>
 
                 <h2>
                     CE QUE<br>
                     J'AI CRÉÉ.
                 </h2>
+
             </div>
 
 
             <div class="notice">
 
-                <strong>SITE EN DÉVELOPPEMENT</strong>
+                <div class="notice-number">
+                    STATUS / 01
+                </div>
 
-                <p>
-                    Pour le moment, seuls mes projets de
-                    <b>scripting</b> sont présentés.
-                    La partie <b>UI Design</b> sera ajoutée prochainement.
-                </p>
+                <div>
+                    <strong>SITE EN DÉVELOPPEMENT</strong>
+
+                    <p>
+                        Pour le moment, seuls mes projets de
+                        <b>scripting</b> sont présentés.
+                        La partie <b>UI Design</b> sera ajoutée prochainement.
+                    </p>
+                </div>
+
+                <span class="notice-status">
+                    WORK IN PROGRESS
+                </span>
 
             </div>
 
 
             <div class="projects">
+
+
+                <!-- INSPECTION -->
 
                 <article class="project large">
 
@@ -151,13 +267,31 @@
                         allow="autoplay; encrypted-media">
                     </iframe>
 
+                    <div class="project-overlay"></div>
+
+                    <div class="project-number">
+                        01
+                    </div>
+
                     <div class="project-info">
+
                         <small>SYSTEM / UI</small>
-                        <h3>Inspection<br>System</h3>
+
+                        <h3>
+                            Inspection<br>
+                            System
+                        </h3>
+
+                    </div>
+
+                    <div class="project-label">
+                        INSPECTION
                     </div>
 
                 </article>
 
+
+                <!-- GENERATOR -->
 
                 <article class="project">
 
@@ -167,13 +301,30 @@
                         allow="autoplay; encrypted-media">
                     </iframe>
 
+                    <div class="project-overlay"></div>
+
+                    <div class="project-number">
+                        02
+                    </div>
+
                     <div class="project-info">
+
                         <small>SCRIPTING</small>
-                        <h3>Generator</h3>
+
+                        <h3>
+                            Generator
+                        </h3>
+
+                    </div>
+
+                    <div class="project-label">
+                        GENERATOR
                     </div>
 
                 </article>
 
+
+                <!-- ZONE -->
 
                 <article class="project">
 
@@ -183,9 +334,24 @@
                         allow="autoplay; encrypted-media">
                     </iframe>
 
+                    <div class="project-overlay"></div>
+
+                    <div class="project-number">
+                        03
+                    </div>
+
                     <div class="project-info">
+
                         <small>GAMEPLAY</small>
-                        <h3>Zone System</h3>
+
+                        <h3>
+                            Zone System
+                        </h3>
+
+                    </div>
+
+                    <div class="project-label">
+                        ZONE
                     </div>
 
                 </article>
@@ -195,55 +361,90 @@
         </section>
 
 
-        <section class="section" id="prices">
+        <!-- PRICES -->
+
+        <section class="section reveal" id="prices">
 
             <div class="heading">
+
                 <span>04 — PRICING</span>
 
                 <h2>
                     SIMPLE.<br>
                     CLAIR.
                 </h2>
+
             </div>
+
 
             <div class="prices">
 
-                <article>
+                <article class="price">
+
                     <small>01 / STARTER</small>
+
                     <h3>Starter</h3>
-                    <strong>1200 <em>R$</em></strong>
+
+                    <strong>
+                        1200 <em>R$</em>
+                    </strong>
 
                     <ul>
                         <li>01 système simple</li>
                         <li>UI basique incluse</li>
                         <li>1 révision</li>
                     </ul>
+
+                    <a href="#contact">
+                        DEMANDER →
+                    </a>
+
                 </article>
 
 
-                <article class="featured">
+                <article class="price featured">
+
                     <small>02 / STANDARD</small>
+
                     <h3>Standard</h3>
-                    <strong>2000 <em>R$</em></strong>
+
+                    <strong>
+                        2000 <em>R$</em>
+                    </strong>
 
                     <ul>
                         <li>Système personnalisé</li>
                         <li>UI personnalisée</li>
                         <li>1 révision</li>
                     </ul>
+
+                    <a href="#contact">
+                        DEMANDER →
+                    </a>
+
                 </article>
 
 
-                <article>
+                <article class="price">
+
                     <small>03 / PRO</small>
+
                     <h3>Pro</h3>
-                    <strong>3300 <em>R$</em></strong>
+
+                    <strong>
+                        3300 <em>R$</em>
+                    </strong>
 
                     <ul>
                         <li>Système avancé</li>
                         <li>UI complète</li>
                         <li>Support après livraison</li>
                     </ul>
+
+                    <a href="#contact">
+                        DEMANDER →
+                    </a>
+
                 </article>
 
             </div>
@@ -251,14 +452,82 @@
         </section>
 
 
-        <section class="contact" id="contact">
+        <!-- ABOUT -->
 
-            <span>05 — START SOMETHING</span>
+        <section class="about reveal" id="about">
+
+            <div class="about-label">
+                05 — ABOUT
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-title">
+
+                    <span>
+                        QUI EST
+                    </span>
+
+                    <strong>
+                        SOSO ?
+                    </strong>
+
+                </div>
+
+
+                <div class="about-content">
+
+                    <p>
+                        Roblox scripter et UI designer,
+                        je crée des systèmes personnalisés
+                        avec une attention particulière
+                        portée aux détails et à l'expérience
+                        du joueur.
+                    </p>
+
+
+                    <div class="stats">
+
+                        <div>
+                            <strong>2+</strong>
+                            <span>YEARS SCRIPTING</span>
+                        </div>
+
+                        <div>
+                            <strong>03</strong>
+                            <span>PROJECTS</span>
+                        </div>
+
+                        <div>
+                            <strong>RBLX</strong>
+                            <span>PLATFORM</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section class="contact reveal" id="contact">
+
+            <span>
+                06 — START SOMETHING
+            </span>
 
             <h2>
                 UNE IDÉE ?<br>
                 <strong>ON LA FAIT.</strong>
             </h2>
+
+            <p>
+                Tu as un système, une idée ou un projet Roblox ?
+            </p>
 
             <a href="https://discord.com/" target="_blank">
                 ME CONTACTER →
@@ -269,13 +538,39 @@
     </main>
 
 
+    <!-- FOOTER -->
+
     <footer>
 
-        <span>© 2026 SOSO.DEV</span>
+        <div class="footer-top">
 
-        <span>ROBLOX SCRIPTING / UI DESIGN</span>
+            <div class="footer-logo">
+                SO<span>S</span>O.
+            </div>
 
-        <span>MADE IN FRANCE</span>
+            <div>
+                ROBLOX SCRIPTING<br>
+                UI DESIGN
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 SOSO.DEV
+            </span>
+
+            <span>
+                MADE IN FRANCE
+            </span>
+
+            <a href="#">
+                BACK TO TOP ↑
+            </a>
+
+        </div>
 
     </footer>
 
@@ -284,3 +579,4 @@
 
 </body>
 </html>
+```
