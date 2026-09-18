@@ -22,10 +22,83 @@ body {
     color: var(--black);
     font-family: "Space Grotesk", sans-serif;
     overflow-x: hidden;
+    perspective: 1200px;
 }
 
 
-/* CURSEUR */
+/* ========================================
+   BACKGROUND 3D
+======================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    right: -160px;
+    top: 100px;
+    background: var(--pink);
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .18;
+    pointer-events: none;
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    left: -150px;
+    bottom: 100px;
+    background: var(--acid);
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .15;
+    pointer-events: none;
+    z-index: -2;
+}
+
+
+/* ========================================
+   3D GRID
+======================================== */
+
+.legal-main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+
+    background-image:
+        linear-gradient(
+            rgba(23,23,23,.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(23,23,23,.045) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 75%
+    );
+}
+
+
+/* ========================================
+   CURSEUR
+======================================== */
 
 .cursor {
     position: fixed;
@@ -36,6 +109,7 @@ body {
     pointer-events: none;
     z-index: 99999;
     transform: translate(-50%, -50%);
+    transition: transform .2s ease;
 }
 
 .cursor-label {
@@ -46,23 +120,23 @@ body {
     letter-spacing: 1px;
     transform: translate(12px, 12px);
     opacity: 0;
-    transition: opacity .2s;
-}
-
-body:hover .cursor-label {
-    opacity: 1;
+    transition: opacity .2s ease;
 }
 
 
-/* HEADER */
+/* ========================================
+   HEADER
+======================================== */
 
 .legal-header {
     width: 100%;
     padding: 25px 7%;
     display: flex;
     align-items: center;
-    gap: 45px;
-    border-bottom: 1px solid rgba(23, 23, 23, .15);
+    gap: 35px;
+    border-bottom: 1px solid rgba(23,23,23,.15);
+    position: relative;
+    z-index: 10;
 }
 
 .legal-logo {
@@ -81,13 +155,13 @@ body:hover .cursor-label {
 .legal-header nav {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 24px;
 }
 
 .legal-header nav a {
     color: var(--black);
     text-decoration: none;
-    font: 10px "DM Mono", monospace;
+    font: 9px "DM Mono", monospace;
     text-transform: uppercase;
     transition: .2s;
 }
@@ -96,7 +170,7 @@ body:hover .cursor-label {
     color: var(--pink);
 }
 
-.legal-header nav a.active {
+.legal-header nav .active {
     color: var(--pink);
 }
 
@@ -112,15 +186,25 @@ body:hover .cursor-label {
 }
 
 
-/* MAIN */
+/* ========================================
+   MAIN
+======================================== */
 
 .legal-main {
-    padding: 100px 7% 70px;
+    position: relative;
+    padding: 100px 7% 80px;
 }
 
+
+/* ========================================
+   INTRO
+======================================== */
+
 .legal-intro {
-    max-width: 900px;
-    margin-bottom: 90px;
+    position: relative;
+    max-width: 1000px;
+    margin-bottom: 100px;
+    transform-style: preserve-3d;
 }
 
 .legal-intro > span {
@@ -130,9 +214,13 @@ body:hover .cursor-label {
 
 .legal-intro h1 {
     margin-top: 25px;
-    font-size: clamp(65px, 10vw, 145px);
-    line-height: .8;
-    letter-spacing: -8px;
+    font-size: clamp(65px, 11vw, 155px);
+    line-height: .78;
+    letter-spacing: -9px;
+    transform: translateZ(35px);
+    text-shadow:
+        5px 5px 0 rgba(23,23,23,.08),
+        10px 10px 0 rgba(23,23,23,.035);
 }
 
 .legal-intro h1 strong {
@@ -140,35 +228,100 @@ body:hover .cursor-label {
 }
 
 .legal-intro p {
-    margin-top: 35px;
-    max-width: 500px;
+    margin-top: 40px;
+    max-width: 520px;
     font-size: 15px;
     line-height: 1.6;
 }
 
 
-/* CARDS */
+/* ========================================
+   CARDS 3D
+======================================== */
 
 .legal-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    background: var(--black);
-    border: 2px solid var(--black);
+    gap: 45px;
+    background: transparent;
+    border: none;
+    perspective: 1000px;
 }
 
 .legal-card {
-    background: var(--bg);
+    position: relative;
     min-height: 330px;
     padding: 40px;
-    position: relative;
-    transition: .25s;
+    background: rgba(233,228,216,.92);
+    border: 1px solid rgba(23,23,23,.18);
+
+    box-shadow:
+        10px 10px 0 var(--black),
+        18px 18px 0 rgba(255,91,127,.35);
+
+    transform:
+        rotateX(1deg)
+        rotateY(-1deg);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+}
+
+.legal-card:nth-child(even) {
+    transform:
+        rotateX(1deg)
+        rotateY(1deg);
 }
 
 .legal-card:hover {
-    background: #eee9de;
-    transform: translateY(-3px);
+    transform:
+        translateY(-10px)
+        rotateX(3deg)
+        rotateY(-3deg);
+
+    box-shadow:
+        15px 15px 0 var(--black),
+        25px 25px 0 var(--pink);
 }
+
+.legal-card:nth-child(even):hover {
+    transform:
+        translateY(-10px)
+        rotateX(3deg)
+        rotateY(3deg);
+}
+
+
+/* petit élément 3D */
+
+.legal-card::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 9px;
+    width: calc(100% - 9px);
+    height: 8px;
+    background: var(--pink);
+    transform: skewX(-45deg);
+    transform-origin: left;
+}
+
+.legal-card::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: -9px;
+    width: 8px;
+    height: calc(100% + 1px);
+    background: var(--acid);
+    transform: skewY(-45deg);
+    transform-origin: top;
+}
+
 
 .legal-card small {
     font: 9px "DM Mono", monospace;
@@ -180,6 +333,7 @@ body:hover .cursor-label {
     margin: 25px 0;
     font-size: 30px;
     letter-spacing: -1px;
+    transform: translateZ(15px);
 }
 
 .legal-card p {
@@ -198,7 +352,9 @@ body:hover .cursor-label {
 }
 
 
-/* BUTTON */
+/* ========================================
+   BUTTON
+======================================== */
 
 .legal-button {
     display: inline-block;
@@ -208,23 +364,34 @@ body:hover .cursor-label {
     color: var(--bg);
     text-decoration: none;
     font: 9px "DM Mono", monospace;
-    transition: .2s;
+
+    box-shadow:
+        5px 5px 0 var(--pink);
+
+    transition: .25s;
 }
 
 .legal-button:hover {
+    transform: translate(-3px, -3px);
     background: var(--pink);
     color: var(--black);
+    box-shadow:
+        8px 8px 0 var(--acid);
 }
 
 
-/* BOTTOM */
+/* ========================================
+   BOTTOM
+======================================== */
 
 .legal-bottom {
-    margin-top: 35px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(23, 23, 23, .2);
+    margin-top: 80px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(23,23,23,.2);
+
     display: flex;
     justify-content: space-between;
+
     font: 9px "DM Mono", monospace;
 }
 
@@ -238,7 +405,9 @@ body:hover .cursor-label {
 }
 
 
-/* MOBILE */
+/* ========================================
+   MOBILE
+======================================== */
 
 @media (max-width: 900px) {
 
@@ -246,10 +415,6 @@ body:hover .cursor-label {
         padding: 20px 25px;
         gap: 20px;
         flex-wrap: wrap;
-    }
-
-    .legal-logo {
-        margin-right: auto;
     }
 
     .legal-header nav {
@@ -269,29 +434,40 @@ body:hover .cursor-label {
     }
 
     .legal-intro {
-        margin-bottom: 60px;
+        margin-bottom: 70px;
     }
 
     .legal-intro h1 {
         font-size: clamp(55px, 17vw, 100px);
-        letter-spacing: -5px;
+        letter-spacing: -6px;
     }
 
     .legal-grid {
         grid-template-columns: 1fr;
+        gap: 35px;
     }
 
-    .legal-card {
+    .legal-card,
+    .legal-card:nth-child(even) {
+        transform: none;
         min-height: auto;
         padding: 30px;
+        box-shadow:
+            7px 7px 0 var(--black),
+            12px 12px 0 rgba(255,91,127,.35);
+    }
+
+    .legal-card:hover,
+    .legal-card:nth-child(even):hover {
+        transform: translateY(-5px);
     }
 
     .legal-bottom {
+        margin-top: 60px;
         flex-wrap: wrap;
         gap: 15px;
     }
 
-    /* Pas de curseur personnalisé sur mobile */
     .cursor,
     .cursor-label {
         display: none;
