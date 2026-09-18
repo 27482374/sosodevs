@@ -1,5 +1,6 @@
 /* ========================================
    SOSO.DEV — MAIN JS
+   Curseur + animations + navbar + retour haut
 ======================================== */
 
 
@@ -12,43 +13,32 @@ const cursorLabel = document.querySelector(".cursor-label");
 
 if (cursor) {
 
-    let mouseX = 0;
-    let mouseY = 0;
-
-    let cursorX = 0;
-    let cursorY = 0;
-
     document.addEventListener("mousemove", (event) => {
 
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-
-        cursor.style.left = mouseX + "px";
-        cursor.style.top = mouseY + "px";
+        cursor.style.left = `${event.clientX}px`;
+        cursor.style.top = `${event.clientY}px`;
 
         if (cursorLabel) {
-            cursorLabel.style.left = mouseX + "px";
-            cursorLabel.style.top = mouseY + "px";
+            cursorLabel.style.left = `${event.clientX}px`;
+            cursorLabel.style.top = `${event.clientY}px`;
         }
 
     });
 
 
-    /* Curseur sur les éléments cliquables */
-
     const clickableElements = document.querySelectorAll(
         "a, button, iframe, .project, .service, .price"
     );
+
 
     clickableElements.forEach((element) => {
 
         element.addEventListener("mouseenter", () => {
 
-            cursor.style.transform =
-                "translate(-50%, -50%) scale(1.8)";
+            cursor.classList.add("hover");
 
             if (cursorLabel) {
-                cursorLabel.style.opacity = "1";
+                cursorLabel.classList.add("visible");
             }
 
         });
@@ -56,11 +46,10 @@ if (cursor) {
 
         element.addEventListener("mouseleave", () => {
 
-            cursor.style.transform =
-                "translate(-50%, -50%) scale(1)";
+            cursor.classList.remove("hover");
 
             if (cursorLabel) {
-                cursorLabel.style.opacity = "0";
+                cursorLabel.classList.remove("visible");
             }
 
         });
@@ -76,7 +65,7 @@ if (cursor) {
 
 const revealElements = document.querySelectorAll(".reveal");
 
-if (revealElements.length > 0) {
+if (revealElements.length) {
 
     const revealObserver = new IntersectionObserver(
         (entries) => {
@@ -128,7 +117,7 @@ if (backToTop) {
 
 
 /* ========================================
-   NAVBAR SCROLL
+   NAVBAR
 ======================================== */
 
 const navbar = document.querySelector(".navbar");
@@ -137,11 +126,10 @@ if (navbar) {
 
     window.addEventListener("scroll", () => {
 
-        if (window.scrollY > 50) {
-            navbar.classList.add("scrolled");
-        } else {
-            navbar.classList.remove("scrolled");
-        }
+        navbar.classList.toggle(
+            "scrolled",
+            window.scrollY > 50
+        );
 
     });
 
@@ -160,6 +148,7 @@ if (marqueeTrack) {
         marqueeTrack.style.animationPlayState = "paused";
     });
 
+
     marqueeTrack.addEventListener("mouseleave", () => {
         marqueeTrack.style.animationPlayState = "running";
     });
@@ -168,7 +157,7 @@ if (marqueeTrack) {
 
 
 /* ========================================
-   PAGE LOADED
+   PAGE READY
 ======================================== */
 
 document.documentElement.classList.add("js-loaded");
