@@ -1,136 +1,174 @@
-/* =========================
-   CURSEUR CUSTOM
-========================= */
+/* ========================================
+   SOSO.DEV — MAIN JS
+======================================== */
+
+
+/* ========================================
+   CUSTOM CURSOR
+======================================== */
 
 const cursor = document.querySelector(".cursor");
 const cursorLabel = document.querySelector(".cursor-label");
 
-document.addEventListener("mousemove", (event) => {
+if (cursor) {
 
-    if (!cursor) return;
+    let mouseX = 0;
+    let mouseY = 0;
 
-    cursor.style.left = event.clientX + "px";
-    cursor.style.top = event.clientY + "px";
+    let cursorX = 0;
+    let cursorY = 0;
 
-    if (cursorLabel) {
-        cursorLabel.style.left = event.clientX + "px";
-        cursorLabel.style.top = event.clientY + "px";
-    }
+    document.addEventListener("mousemove", (event) => {
 
-});
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+
+        cursor.style.left = mouseX + "px";
+        cursor.style.top = mouseY + "px";
+
+        if (cursorLabel) {
+            cursorLabel.style.left = mouseX + "px";
+            cursorLabel.style.top = mouseY + "px";
+        }
+
+    });
 
 
-/* =========================
-   CURSEUR INTERACTIF
-========================= */
+    /* Curseur sur les éléments cliquables */
 
-document
-    .querySelectorAll("a, .service, .price")
-    .forEach((element) => {
+    const clickableElements = document.querySelectorAll(
+        "a, button, iframe, .project, .service, .price"
+    );
+
+    clickableElements.forEach((element) => {
 
         element.addEventListener("mouseenter", () => {
 
-            if (cursor) {
-                cursor.classList.add("big");
+            cursor.style.transform =
+                "translate(-50%, -50%) scale(1.8)";
+
+            if (cursorLabel) {
+                cursorLabel.style.opacity = "1";
             }
 
         });
+
 
         element.addEventListener("mouseleave", () => {
 
-            if (cursor) {
-                cursor.classList.remove("big");
+            cursor.style.transform =
+                "translate(-50%, -50%) scale(1)";
+
+            if (cursorLabel) {
+                cursorLabel.style.opacity = "0";
             }
 
         });
 
     });
 
-
-/* =========================
-   CURSEUR PROJETS
-========================= */
-
-document
-    .querySelectorAll(".project")
-    .forEach((project) => {
-
-        project.addEventListener("mouseenter", () => {
-
-            if (cursor) {
-                cursor.classList.add("big");
-            }
-
-            document.body.classList.add("cursor-project");
-
-        });
-
-        project.addEventListener("mouseleave", () => {
-
-            if (cursor) {
-                cursor.classList.remove("big");
-            }
-
-            document.body.classList.remove("cursor-project");
-
-        });
-
-    });
+}
 
 
-/* =========================
-   ANIMATIONS AU SCROLL
-========================= */
+/* ========================================
+   SCROLL REVEAL
+======================================== */
 
 const revealElements = document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver(
+if (revealElements.length > 0) {
 
-    (entries) => {
+    const revealObserver = new IntersectionObserver(
+        (entries) => {
 
-        entries.forEach((entry) => {
+            entries.forEach((entry) => {
 
-            if (entry.isIntersecting) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
 
-                entry.target.classList.add("visible");
-
-            }
-
-        });
-
-    },
-
-    {
-        threshold: 0.12
-    }
-
-);
-
-
-revealElements.forEach((element) => {
-
-    observer.observe(element);
-
-});
-
-
-/* =========================
-   RETOUR EN HAUT
-========================= */
-
-document
-    .querySelectorAll('a[href="#"]')
-    .forEach((link) => {
-
-        link.addEventListener("click", (event) => {
-
-            event.preventDefault();
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
             });
 
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+    revealElements.forEach((element) => {
+        revealObserver.observe(element);
+    });
+
+}
+
+
+/* ========================================
+   BACK TO TOP
+======================================== */
+
+const backToTop = document.querySelector(
+    '.footer-bottom a[href="#"]'
+);
+
+if (backToTop) {
+
+    backToTop.addEventListener("click", (event) => {
+
+        event.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
 
     });
+
+}
+
+
+/* ========================================
+   NAVBAR SCROLL
+======================================== */
+
+const navbar = document.querySelector(".navbar");
+
+if (navbar) {
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+
+    });
+
+}
+
+
+/* ========================================
+   MARQUEE
+======================================== */
+
+const marqueeTrack = document.querySelector(".marquee-track");
+
+if (marqueeTrack) {
+
+    marqueeTrack.addEventListener("mouseenter", () => {
+        marqueeTrack.style.animationPlayState = "paused";
+    });
+
+    marqueeTrack.addEventListener("mouseleave", () => {
+        marqueeTrack.style.animationPlayState = "running";
+    });
+
+}
+
+
+/* ========================================
+   PAGE LOADED
+======================================== */
+
+document.documentElement.classList.add("js-loaded");
