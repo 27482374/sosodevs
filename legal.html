@@ -17,18 +17,31 @@
     <div class="cursor-label">VIEW</div>
 
 
+    <!-- NAVBAR -->
+
     <header class="legal-header">
 
         <a href="index.html" class="legal-logo">
             SO<span>S</span>O.
         </a>
 
+        <nav>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#projects">Projets</a>
+            <a href="index.html#prices">Tarifs</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="legal.html" class="active">Mentions légales</a>
+        </nav>
+
         <a href="index.html" class="back">
-            ← RETOUR AU SITE
+            ← RETOUR
         </a>
 
     </header>
 
+
+    <!-- CONTENU -->
 
     <main class="legal-main">
 
@@ -51,7 +64,9 @@
 
         <div class="legal-grid">
 
+
             <!-- ÉDITEUR -->
+
             <section class="legal-card">
 
                 <small>01 / ÉDITEUR</small>
@@ -65,10 +80,15 @@
                 </p>
 
                 <p>
-                    <strong>SOSO.DEV</strong><br>
-                    Nom / prénom : <span>[À COMPLÉTER]</span><br>
-                    Adresse : <span>[À COMPLÉTER]</span><br>
-                    Contact : <span>[À COMPLÉTER]</span>
+                    <strong>Soso's</strong><br>
+                    Nom / pseudonyme : Soso's<br>
+                    Responsable de publication : Soso's<br>
+                    Adresse : non communiquée<br>
+                    Contact :
+                    <a href="mailto:hello.contact.soso@proton.me">
+                        hello.contact.soso@proton.me
+                    </a>
+                    ou Discord
                 </p>
 
                 <p>
@@ -81,6 +101,7 @@
 
 
             <!-- HÉBERGEMENT -->
+
             <section class="legal-card">
 
                 <small>02 / HÉBERGEMENT</small>
@@ -101,14 +122,14 @@
                 </p>
 
                 <p>
-                    Le site est publié via le service
-                    GitHub Pages.
+                    Le site est publié via GitHub Pages.
                 </p>
 
             </section>
 
 
             <!-- PROPRIÉTÉ -->
+
             <section class="legal-card">
 
                 <small>03 / PROPRIÉTÉ</small>
@@ -136,6 +157,7 @@
 
 
             <!-- DONNÉES -->
+
             <section class="legal-card">
 
                 <small>04 / DONNÉES</small>
@@ -166,6 +188,7 @@
 
 
             <!-- COOKIES -->
+
             <section class="legal-card">
 
                 <small>05 / COOKIES</small>
@@ -190,6 +213,7 @@
 
 
             <!-- CONTACT -->
+
             <section class="legal-card">
 
                 <small>06 / CONTACT</small>
@@ -233,8 +257,53 @@
     </main>
 
 
-    <!-- SCRIPT DU CURSEUR -->
-    <script src="./js/main.js"></script>
+    <!-- CURSEUR : SCRIPT INDÉPENDANT -->
+
+    <script>
+
+        const cursor = document.querySelector(".cursor");
+        const cursorLabel = document.querySelector(".cursor-label");
+
+        document.addEventListener("mousemove", function(event) {
+
+            cursor.style.left = event.clientX + "px";
+            cursor.style.top = event.clientY + "px";
+
+            cursorLabel.style.left = event.clientX + "px";
+            cursorLabel.style.top = event.clientY + "px";
+
+        });
+
+
+        const clickableElements = document.querySelectorAll(
+            "a, button"
+        );
+
+
+        clickableElements.forEach(function(element) {
+
+            element.addEventListener("mouseenter", function() {
+
+                cursor.style.transform =
+                    "translate(-50%, -50%) scale(1.8)";
+
+                cursorLabel.style.opacity = "1";
+
+            });
+
+
+            element.addEventListener("mouseleave", function() {
+
+                cursor.style.transform =
+                    "translate(-50%, -50%) scale(1)";
+
+                cursorLabel.style.opacity = "0";
+
+            });
+
+        });
+
+    </script>
 
 </body>
 
